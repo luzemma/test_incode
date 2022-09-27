@@ -26,6 +26,17 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>The app uses the camera in order to verify the identity of the customer (KYC), e.g. in ID scan, Selfie scan and so on.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>The app uses the Face ID feature in order to user can authenticate and unlock the access of his/her resources.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app uses the current user location in order to detect exact location in some transactions.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -1,3 +1,21 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def incodeGradleUser = localProperties.getProperty('incode.gradle.username')
+if (incodeGradleUser == null) {
+    throw new GradleException("Incode Username not found. Define Incode Username in the local.properties file.")
+}
+
+def incodeGradlePassword = localProperties.getProperty('incode.gradle.password')
+if (incodeGradleUser == null) {
+    throw new GradleException("Incode Password not found. Define Incode Password in the local.properties file.")
+}
+
 buildscript {
     ext.kotlin_version = '1.6.10'
     repositories {
@@ -15,6 +33,16 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+
+        maven { url 'https://www.jitpack.io' }
+        maven {
+            url "https://repo.incode.com/artifactory/libs-incode-welcome"
+            credentials {
+                username = incodeGradleUser
+                password = incodeGradlePassword
+            }
+        }
     }
 }
 
